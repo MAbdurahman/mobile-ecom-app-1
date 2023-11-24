@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 import colors from 'colors';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
-
+import connectDatabase from "./config/configDatabase.js";
 import Template from "./template.js";
 
 //**************** configuration setup ****************//
@@ -19,9 +19,7 @@ const NODE_ENV = process.env.NODE_ENV;
 const API_URL = process.env.API_ENV || "/api/v1.0/";
 
 //**************** connect to database ****************//
-
-
-
+connectDatabase();
 //**************** middleware****************//
 if (process.env.NODE_ENV === 'DEVELOPMENT') {
     app.use(morgan('dev'));
